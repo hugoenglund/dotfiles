@@ -1,8 +1,5 @@
-# github token
-export GH_TOKEN=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
-
-# gcloud ADC
-export ADC="${HOME}/.config/gcloud/application_default_credentials.json"
+# secret stuff
+source .my-secrets
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
