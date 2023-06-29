@@ -1,0 +1,2 @@
+# move focused workspace between monitors
+bindsym $mod+m move workspace to output left
