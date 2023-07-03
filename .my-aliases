@@ -1,0 +1,50 @@
+#!/bin/zsh
+
+# xclip
+alias 'xclip'='xclip -selection c'
+
+# batcat
+alias 'bat'='batcat'
+
+# vscode (open vscode and close terminal)
+alias 'vsc'='code . && exit'
+
+# kill docker containers and prune volumes
+alias 'docker-kill'='docker rm -f $(docker ps -a -q) | docker volume prune -f'
+
+# start vpn
+alias 'vpn'='netExtender -d Nepa -u hugo.englund connect.nepa.com'
+
+# lazydocker
+alias 'lzd'='lazydocker'
+
+# lazygit
+alias 'lzg'='lazygit'
+
+# dotfile shortcut
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# fuzzy finder
+# fe [FUZZY PATTERN] - Open the selected file with the default editor
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+f() {
+    IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+    [[ -n "$files" ]] && ${EDITOR:-nvim} "${files[@]}"
+}
+
+# fo [FUZZY PATTERN] - Open the selected file with "open" command and close
+# terminal afterwards
+fo() {
+    IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0)")
+    file=$(head -2 <<< "$out" | tail -1)
+    if [ -n "$file" ]; then
+        open "$file" && kill -9 $PPID
+    fi
+}
+
+# nepa utils
+NEPA="$HOME/.nepa-utils"
+if test -f "$NEPA"; then
+    . "$NEPA"
+fi
