@@ -15,12 +15,11 @@ return {
 			null_ls.setup({
 				sources = {
 					-- formatting
+					formatting.prettierd,
 					formatting.stylua,
-					formatting.yamlfmt,
 					formatting.taplo,
 					formatting.shellharden,
 					formatting.beautysh,
-					formatting.fixjson,
 					formatting.black,
 					formatting.isort,
 					formatting.ruff,
@@ -34,10 +33,7 @@ return {
 					diagnostics.checkmake,
 					diagnostics.hadolint,
 					diagnostics.jsonlint,
-					diagnostics.shellcheck,
 					diagnostics.yamllint,
-					diagnostics.alex,
-					diagnostics.write_good,
 
 					-- code actions
 					code_actions.gitsigns,
@@ -79,27 +75,29 @@ return {
 
 			mason_nls.setup({
 				ensure_installed = {
+					--general
+					"prettierd",
+
 					--lua
+					"lua_ls",
 					"stylua",
 
 					-- shell
-					"shellcheck",
+					"bashls",
 					"beautysh",
 					"shellharden",
+					"shellcheck",
 
 					-- yaml
+					"yamlls",
 					"yamllint",
 
 					-- docker
+					"dockerls",
 					"hadolint",
 
 					-- json
 					"jsonlint",
-					"fixjson",
-
-					-- markdown
-					"alex",
-					"write_good",
 
 					-- toml
 					"taplo",
@@ -107,6 +105,7 @@ return {
 					-- python
 					-- NOTE: most python services are handled locally for simplicty
 					-- NOTE: use global pylint for speed improvements
+					"pyright",
 					"pylint",
 				},
 			})

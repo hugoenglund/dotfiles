@@ -1,5 +1,5 @@
 # secret stuff
-source .my-secrets
+source "$HOME/.my-secrets"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
