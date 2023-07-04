@@ -27,6 +27,21 @@ return {
 			local lsp = require("lsp-zero")
 
 			lsp.preset("recommended")
+
+			lsp.configure("pyright", {
+				python = {
+					analysis = {
+						autoSearchPaths = true,
+						useLibraryCodeForTypes = true,
+						diagnosticMode = "openFilesOnly",
+						typeCheckingMode = "basic",
+					},
+				},
+				pyright = {
+					disableOrganizeImports = true,
+				},
+			})
+
 			lsp.on_attach(function(_, bufnr)
 				local opts = { buffer = bufnr, remap = false }
 
@@ -51,7 +66,7 @@ return {
 				keymap("n", "<leader>pd", "<cmd>Lspsaga peek_definition<CR>", opts)
 				keymap("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
 			end)
-			lsp.nvim_workspace()
+
 			lsp.setup()
 
 			vim.diagnostic.config({

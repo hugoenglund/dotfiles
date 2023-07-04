@@ -15,7 +15,9 @@ return {
 			null_ls.setup({
 				sources = {
 					-- formatting
-					formatting.prettierd,
+					formatting.prettier.with({
+						extra_args = { "--tab-width", "4" },
+					}),
 					formatting.stylua,
 					formatting.taplo,
 					formatting.shellharden,
@@ -50,10 +52,11 @@ return {
 							callback = function()
 								vim.lsp.buf.format({
 									filter = function(client)
-										--  only use null-ls for formatting instead of lsp server
+										-- only use null-ls for formatting instead of lsp server
 										return client.name == "null-ls"
 									end,
 									bufnr = bufnr,
+									async = false,
 								})
 							end,
 						})
@@ -76,7 +79,7 @@ return {
 			mason_nls.setup({
 				ensure_installed = {
 					--general
-					"prettierd",
+					"prettier",
 
 					--lua
 					"lua_ls",
@@ -103,11 +106,12 @@ return {
 					"taplo",
 
 					-- python
+					"pyright",
 					-- NOTE: most python services are handled locally for simplicty
 					-- NOTE: use global pylint for speed improvements
-					"pyright",
 					"pylint",
 				},
+				automatic_installation = false,
 			})
 		end,
 	},

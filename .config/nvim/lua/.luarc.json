@@ -26,5 +26,6 @@
         "/home/huen/.local/share/nvim/lazy/cmp-buffer/lua",
         "/home/huen/.config/nvim/lua",
         "${3rd}/luv/library"
-    ]
+    ],
+    "workspace.checkThirdParty": false
 }

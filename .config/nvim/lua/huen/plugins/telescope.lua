@@ -12,11 +12,18 @@ return {
 	},
 	keys = {
 		{
-			"<leader>pf",
+			"<C-p>",
 			function()
 				require("telescope.builtin").find_files()
 			end,
 			desc = "Open file explorer",
+		},
+		{
+			"<C-b>",
+			function()
+				require("telescope.builtin").buffers()
+			end,
+			desc = "Open buffer explorer",
 		},
 		{
 			"<leader>ps",
@@ -25,23 +32,22 @@ return {
 			end,
 			desc = "Project-wide search",
 		},
-		{
-			"<C-p>",
-			function()
-				if os.execute("git") == 0 then
-					require("telescope.builtin").git_files()
-				else
-					require("telescope.builtin").find_files()
-				end
-			end,
-			desc = "Run git ls-files command if git repo, else list cwd",
-		},
 	},
 	opts = {
 		pickers = {
 			find_files = {
 				hidden = true, -- show hidden files
 				theme = "dropdown", -- builtin theme
+			},
+			buffers = {
+				theme = "dropdown", -- builtin theme
+			},
+		},
+		defaults = {
+			mappings = {
+				i = {
+					["<esc>"] = "close", -- close explorer with <esc>
+				},
 			},
 		},
 	},

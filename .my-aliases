@@ -22,7 +22,7 @@ alias 'lzd'='lazydocker'
 alias 'lzg'='lazygit'
 
 # dotfile shortcut
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias 'dotfiles'='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # fuzzy finder
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
@@ -44,7 +44,7 @@ fo() {
 }
 
 # nepa utils
-NEPA="$HOME/.nepa-utils"
+NEPA="$HOME/.my-gdrive"
 if test -f "$NEPA"; then
     . "$NEPA"
 fi
