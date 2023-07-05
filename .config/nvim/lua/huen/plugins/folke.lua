@@ -5,8 +5,8 @@ return {
 		cmd = "ZenMode",
 		opts = {
 			plugins = {
-				gitsigns = true,
-				tmux = true,
+				gitsigns = false,
+				tmux = false,
 			},
 		},
 		keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },

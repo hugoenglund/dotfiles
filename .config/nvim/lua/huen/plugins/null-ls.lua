@@ -16,7 +16,7 @@ return {
 				sources = {
 					-- formatting
 					formatting.prettier.with({
-						extra_args = { "--tab-width", "4" },
+						extra_args = { "--tab-width", "2" },
 					}),
 					formatting.stylua,
 					formatting.taplo,
