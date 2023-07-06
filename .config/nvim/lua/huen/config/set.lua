@@ -61,3 +61,5 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.o.shortmess = vim.o.shortmess .. "I" -- Disable intro message
+
+vim.opt.splitright = true -- Vertical split to the right
