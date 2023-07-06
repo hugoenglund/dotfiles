@@ -28,17 +28,17 @@ return {
 
 			lsp.preset("recommended")
 
+			-- python
 			lsp.configure("pyright", {
-				python = {
-					analysis = {
-						autoSearchPaths = true,
-						useLibraryCodeForTypes = true,
-						diagnosticMode = "openFilesOnly",
-						typeCheckingMode = "basic",
+				root_dir = require("lspconfig.util").root_pattern("pyproject.toml", "pyrightconfig.json"),
+				settings = {
+					python = {
+						analysis = {
+							autoSearchPaths = true,
+							useLibraryCodeForTypes = true,
+							diagnosticMode = "openFilesOnly",
+						},
 					},
-				},
-				pyright = {
-					disableOrganizeImports = true,
 				},
 			})
 

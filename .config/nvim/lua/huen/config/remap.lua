@@ -35,10 +35,10 @@ keymap("n", "Q", "<nop>")
 -- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- quickfix
-keymap("n", "<C-k>", "<cmd>cnext<CR>zz")
-keymap("n", "<C-j>", "<cmd>cprev<CR>zz")
-keymap("n", "<leader>k", "<cmd>lnext<CR>zz")
-keymap("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- keymap("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- keymap("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- keymap("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- keymap("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- edit all occurrences of the word under cursor
 keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -54,3 +54,9 @@ keymap("n", "<leader>w", ":w<CR>")
 
 -- format shortcut
 keymap("n", "<leader>f", vim.lsp.buf.format)
+
+-- navigate panes
+keymap("n", "gh", "<C-w>h")
+keymap("n", "gj", "<C-w>j")
+keymap("n", "gk", "<C-w>k")
+keymap("n", "gl", "<C-w>l")
