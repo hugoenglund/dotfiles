@@ -66,3 +66,7 @@ keymap("n", "<M-1>", "1<C-w><C-w>")
 keymap("n", "<M-2>", "2<C-w><C-w>")
 keymap("n", "<M-3>", "3<C-w><C-w>")
 keymap("n", "<M-4>", "4<C-w><C-w>")
+
+-- snake case navigation
+keymap("n", ",b", "F_")
+keymap("n", ",e", "f_")

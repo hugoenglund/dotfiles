@@ -1,2 +1,3 @@
 regolith.look.path: /usr/share/regolith-look/lascaille
 i3xrocks.value.font: 11
+i3xrocks.date.format2: %H:%M %d/%m

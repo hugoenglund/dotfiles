@@ -42,6 +42,7 @@ return {
 					code_actions.refactoring,
 					code_actions.shellcheck,
 				},
+
 				-- configure format on save
 				on_attach = function(current_client, bufnr)
 					if current_client.supports_method("textDocument/formatting") then
@@ -106,10 +107,7 @@ return {
 					"taplo",
 
 					-- python
-					"pyright",
-					-- NOTE: most python services are handled locally for simplicty
-					-- NOTE: use global pylint for speed improvements
-					"pylint",
+					"pyright", -- NOTE: python services are handled locally for simplicty
 				},
 				automatic_installation = false,
 			})

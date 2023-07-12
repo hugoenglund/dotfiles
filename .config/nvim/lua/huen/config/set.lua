@@ -31,8 +31,8 @@ vim.opt.ignorecase = true
 
 vim.opt.expandtab = true
 vim.opt.breakindent = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
 vim.opt.ai = true -- Auto indent
 vim.opt.si = true -- Smart indent
 vim.opt.smarttab = true
@@ -47,7 +47,7 @@ vim.opt.undofile = true
 vim.opt.backspace = "start,eol,indent"
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 
-vim.opt.colorcolumn = "79"
+vim.opt.colorcolumn = "80"
 
 vim.opt.updatetime = 50
 
@@ -63,3 +63,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.o.shortmess = vim.o.shortmess .. "I" -- Disable intro message
 
 vim.opt.splitright = true -- Vertical split to the right
+
+-- modify tab size for specific file types
+vim.api.nvim_create_autocmd(
+	{ "BufEnter" },
+	{ pattern = { "*.py, *.lua" }, command = ":setlocal tabstop=4 shiftwidth=4 expandtab" }
+)
