@@ -52,19 +52,23 @@ return {
 
 				keymap("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
 				keymap("n", "<leader>vd", vim.diagnostic.open_float, opts)
-				keymap("n", "[d", vim.diagnostic.goto_prev, opts)
-				keymap("n", "]d", vim.diagnostic.goto_next, opts)
 				keymap("n", "<leader>vca", vim.lsp.buf.code_action, opts)
 				keymap("n", "<leader>vrn", vim.lsp.buf.rename, opts)
 
 				keymap("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 				keymap("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 
+				-- DisablRemovee in favor of LSP saga
+				-- keymap("n", "[d", vim.diagnostic.goto_prev, opts)
+				-- keymap("n", "]d", vim.diagnostic.goto_next, opts)
+
 				-- LSP saga keymaps
+				keymap("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+				keymap("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 				keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
 				keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
 				keymap("n", "<leader>pd", "<cmd>Lspsaga peek_definition<CR>", opts)
-				keymap("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", opts)
+				keymap("n", "gr", "<cmd>Lspsaga finder<CR>", opts)
 			end)
 
 			lsp.setup()
