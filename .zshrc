@@ -36,7 +36,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 7
+
+# zsh auto-update
+ZSH_CUSTOM_AUTOUPDATE_QUIET=true
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -80,11 +83,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
     git
     fzf
+    tmux
     fzf-zsh-plugin
     fzf-tab
     zsh-syntax-highlighting
     zsh-autosuggestions
     zsh-vi-mode
+    autoupdate
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -125,4 +130,20 @@ autoload -U compinit && compinit -u
 export LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH
 export PATH=/usr/local/cuda-11.7/bin:$PATH
 
+# fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# modular/mojo
+export MODULAR_HOME="/home/huen/.modular"
+export PATH="/home/huen/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/huen/.local/share/pnpm"
+case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# pipx
+# export PATH="/home/huen/.local/bin/pipx:$PATH"

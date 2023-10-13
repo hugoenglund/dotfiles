@@ -14,25 +14,25 @@ return {
 			end,
 		},
 		{
-			"<C-1>",
+			"<leader>a",
 			function()
 				require("harpoon.ui").nav_file(1)
 			end,
 		},
 		{
-			"<C-2>",
+			"<leader>s",
 			function()
 				require("harpoon.ui").nav_file(2)
 			end,
 		},
 		{
-			"<C-3>",
+			"<leader>d",
 			function()
 				require("harpoon.ui").nav_file(3)
 			end,
 		},
 		{
-			"<C-4>",
+			"<leader>f",
 			function()
 				require("harpoon.ui").nav_file(4)
 			end,

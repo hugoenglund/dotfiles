@@ -15,27 +15,29 @@ return {
 			null_ls.setup({
 				sources = {
 					-- formatting
-					formatting.prettier.with({
-						extra_args = { "--tab-width", "2" },
-					}),
 					formatting.stylua,
 					formatting.taplo,
 					formatting.shellharden,
 					formatting.beautysh,
 					formatting.black,
-					formatting.isort,
+					-- formatting.isort,
 					formatting.ruff,
+					formatting.mdformat,
+					formatting.prettierd.with({
+						disabled_filetypes = { "markdown", "markdown.mdx" },
+					}),
 
 					-- diagnostics
+					-- diagnostics.checkmake,
+					-- diagnostics.pylint,
+					-- diagnostics.pydocstyle,
 					diagnostics.mypy,
-					diagnostics.pylint,
-					diagnostics.pydocstyle,
-					diagnostics.flake8,
 					diagnostics.ruff,
-					diagnostics.checkmake,
 					diagnostics.hadolint,
 					diagnostics.jsonlint,
 					diagnostics.yamllint,
+					diagnostics.markdownlint,
+					diagnostics.eslint_d,
 
 					-- code actions
 					code_actions.gitsigns,
@@ -79,8 +81,9 @@ return {
 
 			mason_nls.setup({
 				ensure_installed = {
-					--general
-					"prettier",
+					-- typescript
+					"prettierd",
+					"eslint_d",
 
 					--lua
 					"lua_ls",
@@ -106,8 +109,13 @@ return {
 					-- toml
 					"taplo",
 
+					--markdown
+					"marksman",
+					"markdownlint",
+
 					-- python
-					"pyright", -- NOTE: python services are handled locally for simplicty
+					"pyright",
+					"ruff_lsp",
 				},
 				automatic_installation = false,
 			})

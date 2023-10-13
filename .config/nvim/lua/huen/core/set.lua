@@ -69,3 +69,8 @@ vim.api.nvim_create_autocmd(
 	{ "BufEnter" },
 	{ pattern = { "*.py, *.lua" }, command = ":setlocal tabstop=4 shiftwidth=4 expandtab" }
 )
+
+-- integrated terminal
+vim.api.nvim_command("autocmd TermOpen * setlocal nonumber norelativenumber") -- no numbers
+vim.api.nvim_command("autocmd TermOpen * startinsert") -- no numbers
+vim.api.nvim_command("autocmd TermEnter * setlocal signcolumn=no") -- no sign column

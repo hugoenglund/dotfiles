@@ -15,6 +15,11 @@ return {
 					}
 				end,
 			},
+			integrations = {
+				which_key = true,
+				lsp_saga = true,
+				mason = true,
+			},
 		})
 
 		vim.cmd([[colorscheme catppuccin]])

@@ -3,12 +3,6 @@ return {
 	{
 		"folke/zen-mode.nvim",
 		cmd = "ZenMode",
-		opts = {
-			plugins = {
-				gitsigns = false,
-				tmux = false,
-			},
-		},
 		keys = { { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode" } },
 	},
 
@@ -54,5 +48,23 @@ return {
 				-- refer to the configuration section below
 			})
 		end,
+	},
+
+	-- trouble
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+		keys = {
+			{
+				"<leader>xx",
+				":TroubleToggle<cr>",
+				desc = "Open workspace diagnostics",
+			},
+		},
 	},
 }

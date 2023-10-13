@@ -8,7 +8,8 @@ export FZF_DEFAULT_COMMAND="rg --files --follow --no-ignore-vcs --hidden -g '!{*
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+eval "$(command pyenv init -)"
+eval "$(command pyenv virtualenv-init -)"
 
 # rust
 . "$HOME/.cargo/env"

@@ -24,7 +24,6 @@ return {
 				ensure_installed = {
 					"bash",
 					"gitignore",
-					"help",
 					"lua",
 					"luap",
 					"markdown",
@@ -34,6 +33,7 @@ return {
 					"sql",
 					"toml",
 					"vim",
+					"vimdoc",
 					"yaml",
 					"json",
 				},

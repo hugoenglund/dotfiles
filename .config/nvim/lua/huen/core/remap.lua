@@ -41,7 +41,7 @@ keymap("n", "Q", "<nop>")
 -- keymap("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- edit all occurrences of the word under cursor
-keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- edit all occurences of selected text
 keymap("v", "<C-r>", [["hy:%s/<C-r>h//g<left><left><left>]])
@@ -53,7 +53,7 @@ keymap("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 keymap("n", "<leader>w", ":w<CR>")
 
 -- format shortcut
-keymap("n", "<leader>f", vim.lsp.buf.format)
+keymap("n", "<leader>bf", vim.lsp.buf.format)
 
 -- navigate panes: arrows
 keymap("n", "<M-h>", "<C-w>h")
@@ -70,3 +70,11 @@ keymap("n", "<M-4>", "4<C-w><C-w>")
 -- snake case navigation
 keymap("n", ",b", "F_")
 keymap("n", ",e", "f_")
+
+-- delete buffer
+keymap("n", "<leader>bd", "<cmd>bd<CR>")
+
+-- terminal
+keymap("n", "<leader>;", "<cmd>term<CR>") -- open terminal buffer
+keymap("t", "<esc>", "<C-\\><C-n>") -- esc to exit insert mode
+keymap("t", "<leader>bd", "<cmd>bd!<CR>") -- close terminal buffer

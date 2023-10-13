@@ -4,6 +4,9 @@ return {
 	config = function()
 		require("lspsaga").setup({
 			lightbulb = { enable = false },
+			ui = {
+				kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+			},
 		})
 	end,
 	dependencies = {

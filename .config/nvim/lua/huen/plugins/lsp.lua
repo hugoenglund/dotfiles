@@ -28,7 +28,7 @@ return {
 
 			lsp.preset("recommended")
 
-			-- python
+			-- python: pyright
 			lsp.configure("pyright", {
 				root_dir = require("lspconfig.util").root_pattern("pyproject.toml", "pyrightconfig.json"),
 				settings = {
@@ -40,6 +40,20 @@ return {
 						},
 					},
 				},
+			})
+
+			-- python: ruff-lsp
+			lsp.configure("ruff_lsp", {
+				root_dir = require("lspconfig.util").root_pattern("pyproject.toml"),
+				settings = {
+					-- Any extra CLI arguments for `ruff` go here.
+					args = { "--config", "pyproject.toml" },
+				},
+			})
+
+			-- toml
+			lsp.configure("taplo", {
+				root_dir = require("lspconfig.util").root_pattern(".taplo.toml", "taplo.toml"),
 			})
 
 			lsp.on_attach(function(_, bufnr)
@@ -58,7 +72,7 @@ return {
 				keymap("n", "<C-k>", vim.lsp.buf.signature_help, opts)
 				keymap("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 
-				-- DisablRemovee in favor of LSP saga
+				-- Disable in favor of LSP saga
 				-- keymap("n", "[d", vim.diagnostic.goto_prev, opts)
 				-- keymap("n", "]d", vim.diagnostic.goto_next, opts)
 

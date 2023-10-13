@@ -1,1 +1,1 @@
-require("huen.config")
+require("huen.core")
