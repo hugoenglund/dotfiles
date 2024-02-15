@@ -90,6 +90,8 @@ plugins=(
     zsh-autosuggestions
     zsh-vi-mode
     autoupdate
+    pdm
+    direnv
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
@@ -121,17 +123,16 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# autojump
-[[ -s /home/huen/.autojump/etc/profile.d/autojump.sh ]] && source /home/huen/.autojump/etc/profile.d/autojump.sh
-autoload -U compinit && compinit -u
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export LD_LIBRARY_PATH=/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH
 export PATH=/usr/local/cuda-11.7/bin:$PATH
 
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+autoload -U bashcompinit
+bashcompinit
+
+# z around
+. ~/z/z.sh
 
 # modular/mojo
 export MODULAR_HOME="/home/huen/.modular"
@@ -145,5 +146,25 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# extras
+export PATH="$PATH:/home/huen/.local/bin"
+
+# pdm
+pdm() {
+    local command=$1
+
+    if [[ "$command" == "shell" ]]; then
+        eval $(pdm venv activate)
+    else
+        command pdm $@
+    fi
+}
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# mise
+eval "$(~/.local/bin/mise activate zsh)"
+
 # pipx
-# export PATH="/home/huen/.local/bin/pipx:$PATH"
+eval "$(register-python-argcomplete pipx)"

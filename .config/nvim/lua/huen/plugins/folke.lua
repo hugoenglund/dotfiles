@@ -1,4 +1,10 @@
 return {
+	-- neodev
+	"folke/neodev.nvim",
+
+	-- neoconf
+	{ "folke/neoconf.nvim", cmd = "Neoconf" },
+
 	-- zen mode
 	{
 		"folke/zen-mode.nvim",
@@ -58,6 +64,14 @@ return {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
+			signs = {
+				-- icons / text used for a diagnostic
+				error = "",
+				warning = "",
+				hint = "",
+				information = "",
+				other = "",
+			},
 		},
 		keys = {
 			{

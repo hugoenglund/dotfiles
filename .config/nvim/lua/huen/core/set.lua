@@ -47,30 +47,34 @@ vim.opt.undofile = true
 vim.opt.backspace = "start,eol,indent"
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "81"
 
 vim.opt.updatetime = 50
 
 vim.g.mapleader = " "
 
-vim.g.python3_host_prog = "/home/huen/.pyenv/versions/neovim/bin/python"
+vim.g.python3_host_prog = "/home/huen/.local/share/mise/installs/python/3.10/bin/python"
 
 vim.g.loaded_perl_provider = 0
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = { "*.py", "*.lua" },
+	callback = function()
+		vim.opt_local.shiftwidth = 4
+		vim.opt_local.tabstop = 4
+	end,
+})
+
 vim.o.shortmess = vim.o.shortmess .. "I" -- Disable intro message
 
 vim.opt.splitright = true -- Vertical split to the right
 
--- modify tab size for specific file types
-vim.api.nvim_create_autocmd(
-	{ "BufEnter" },
-	{ pattern = { "*.py, *.lua" }, command = ":setlocal tabstop=4 shiftwidth=4 expandtab" }
-)
-
--- integrated terminal
-vim.api.nvim_command("autocmd TermOpen * setlocal nonumber norelativenumber") -- no numbers
-vim.api.nvim_command("autocmd TermOpen * startinsert") -- no numbers
-vim.api.nvim_command("autocmd TermEnter * setlocal signcolumn=no") -- no sign column
+-- Diagnostic symbols in sign column
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end

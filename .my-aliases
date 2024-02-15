@@ -7,7 +7,7 @@ alias 'xclip'='xclip -selection c'
 alias 'bat'='batcat'
 
 # vscode (open vscode and close terminal)
-alias 'vsc'='code . && exit'
+alias 'vsc'='code .'
 
 # kill docker containers and prune volumes
 alias 'docker-kill'='docker rm -f $(docker ps -a -q) | docker volume prune -f'
@@ -48,3 +48,6 @@ NEPA="$HOME/.my-gdrive"
 if test -f "$NEPA"; then
     . "$NEPA"
 fi
+
+# connect sony headset bt
+alias "hs"=~/headset.sh

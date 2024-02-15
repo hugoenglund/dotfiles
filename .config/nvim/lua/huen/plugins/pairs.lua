@@ -1,21 +1,20 @@
 return {
-	-- Manipulate surrounding delimiters
-	{
-		"kylechui/nvim-surround",
-		version = "*", -- Use for stability; omit to use `main` branch for the latest features
-		event = "VeryLazy",
-		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
-		end,
-	},
-
 	-- Autopairs
 	{
 		"windwp/nvim-autopairs",
-		config = function()
-			require("nvim-autopairs").setup({})
+		opts = {
+			fast_wrap = {},
+			disable_filetype = { "TelescopePrompt", "vim" },
+		},
+		config = function(_, opts)
+			require("nvim-autopairs").setup(opts)
+
+			-- setup cmp for autopairs
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
+		-- config = function()
+		-- 	require("nvim-autopairs").setup({})
+		-- end,
 	},
 }

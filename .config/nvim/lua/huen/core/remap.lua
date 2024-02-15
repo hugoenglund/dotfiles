@@ -31,6 +31,9 @@ keymap("n", "<leader>Y", '"+Y')
 -- disable "Q"
 keymap("n", "Q", "<nop>")
 
+-- disable recording until i learnt it
+keymap("n", "q", "<nop>")
+
 --open directory via tmux
 -- keymap("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
@@ -47,7 +50,7 @@ keymap("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 keymap("v", "<C-r>", [["hy:%s/<C-r>h//g<left><left><left>]])
 
 -- make bash script executable
-keymap("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+keymap("n", "<leader>cx", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- write shortcut
 keymap("n", "<leader>w", ":w<CR>")
@@ -61,20 +64,9 @@ keymap("n", "<M-j>", "<C-w>j")
 keymap("n", "<M-k>", "<C-w>k")
 keymap("n", "<M-l>", "<C-w>l")
 
--- navigate panes: numbers
-keymap("n", "<M-1>", "1<C-w><C-w>")
-keymap("n", "<M-2>", "2<C-w><C-w>")
-keymap("n", "<M-3>", "3<C-w><C-w>")
-keymap("n", "<M-4>", "4<C-w><C-w>")
-
 -- snake case navigation
 keymap("n", ",b", "F_")
 keymap("n", ",e", "f_")
 
 -- delete buffer
 keymap("n", "<leader>bd", "<cmd>bd<CR>")
-
--- terminal
-keymap("n", "<leader>;", "<cmd>term<CR>") -- open terminal buffer
-keymap("t", "<esc>", "<C-\\><C-n>") -- esc to exit insert mode
-keymap("t", "<leader>bd", "<cmd>bd!<CR>") -- close terminal buffer
